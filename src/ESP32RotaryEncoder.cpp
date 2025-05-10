@@ -313,7 +313,7 @@ void RotaryEncoder::setEncoderValue( long newValue )
   portEXIT_CRITICAL( &mux );
 }
 
-void ARDUINO_ISR_ATTR RotaryEncoder::loop()
+void RotaryEncoder::loop()
 {
   if( callbackEncoderChanged != NULL && encoderChanged() )
     callbackEncoderChanged( getEncoderValue() );
@@ -322,7 +322,7 @@ void ARDUINO_ISR_ATTR RotaryEncoder::loop()
     callbackButtonPressed( buttonPressedDuration );
 }
 
-void ARDUINO_ISR_ATTR RotaryEncoder::_button_ISR()
+void RotaryEncoder::_button_ISR()
 {
   portENTER_CRITICAL_ISR( &mux );
 
@@ -358,7 +358,7 @@ void ARDUINO_ISR_ATTR RotaryEncoder::_button_ISR()
   portEXIT_CRITICAL_ISR( &mux );
 }
 
-void ARDUINO_ISR_ATTR RotaryEncoder::_encoder_ISR()
+void RotaryEncoder::_encoder_ISR()
 {
   portENTER_CRITICAL_ISR( &mux );
 
